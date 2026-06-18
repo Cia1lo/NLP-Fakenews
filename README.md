@@ -37,6 +37,7 @@ uv run fakenews-ablations --suite core
 uv run fakenews-size-control --dataset politifact
 uv run fakenews-check-device
 uv run fakenews-size-buckets --input-dir outputs/ablations_pooling_splits
+uv run fakenews-matched-eval --input-dir outputs/ablations_pooling_splits
 ```
 
 当前实验数据目录：
@@ -177,6 +178,32 @@ uv run fakenews-ablations \
   --output-dir outputs/ablations_pooling_splits
 ```
 
+如果要在同一套 root/mean + BERT/profile 拆分实验里同时补 `size_only`
+图规模基线，使用：
+
+```bash
+uv run fakenews-ablations \
+  --suite pooling_splits_controls \
+  --seeds 42 43 44 \
+  --datasets politifact gossipcop \
+  --epochs 50 \
+  --batch-size 32 \
+  --hidden-dim 128 \
+  --patience 10 \
+  --device auto \
+  --output-dir outputs/ablations_pooling_splits_controls
+```
+
+其中 `size_only` 只使用图规模统计特征，不读取 BERT/profile/content/spacy：
+
+```text
+node_count
+edge_count
+log_node_count
+log_edge_count
+edge_per_node
+```
+
 按图规模分桶分析测试集表现：
 
 ```bash
@@ -188,6 +215,31 @@ uv run fakenews-size-buckets --input-dir outputs/ablations_pooling_splits --spli
 ```text
 outputs/ablations_pooling_splits/test_size_bucket_summary.csv
 outputs/ablations_pooling_splits/test_size_bucket_summary_by_experiment.csv
+```
+
+更严格的图规模匹配评估会在每个 dataset/experiment/seed 的预测结果内，
+按 `log1p(node_count)` 做 real/fake 一对一最近邻匹配，然后只在匹配子集上重算指标：
+
+```bash
+uv run fakenews-matched-eval \
+  --input-dir outputs/ablations_pooling_splits \
+  --split test
+```
+
+如需限制最大匹配距离，可加 caliper：
+
+```bash
+uv run fakenews-matched-eval \
+  --input-dir outputs/ablations_pooling_splits \
+  --split test \
+  --caliper 0.25
+```
+
+匹配评估结果会写到：
+
+```text
+outputs/ablations_pooling_splits/test_matched_summary.csv
+outputs/ablations_pooling_splits/test_matched_summary_by_experiment.csv
 ```
 
 ## 当前基线结果

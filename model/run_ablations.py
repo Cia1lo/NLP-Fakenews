@@ -65,8 +65,18 @@ SIZE_CONTROL_EXPERIMENTS = (
     ),
 )
 
+SIZE_ONLY_EXPERIMENTS = (
+    Experiment(
+        "size_only",
+        graph_layers=0,
+        pooling="size_only",
+        trainer="size_control",
+    ),
+)
+
 CONTROL_EXPERIMENTS = SIZE_CONTROL_EXPERIMENTS + POOLING_CONTROL_EXPERIMENTS
 CORE_CONTROL_EXPERIMENTS = CORE_EXPERIMENTS + CONTROL_EXPERIMENTS
+POOLING_SPLIT_CONTROL_EXPERIMENTS = POOLING_SPLIT_EXPERIMENTS + SIZE_ONLY_EXPERIMENTS
 
 FULL_EXPERIMENTS = CORE_CONTROL_EXPERIMENTS + (
     Experiment("content_only_graph", ("content",)),
@@ -115,7 +125,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--datasets", nargs="+", default=["politifact", "gossipcop"])
     parser.add_argument(
         "--suite",
-        choices=["core", "controls", "core_controls", "pooling_splits", "full"],
+        choices=[
+            "core",
+            "controls",
+            "core_controls",
+            "pooling_splits",
+            "pooling_splits_controls",
+            "full",
+        ],
         default="core",
     )
     parser.add_argument("--output-dir", default="outputs/ablations")
@@ -147,6 +164,8 @@ def experiments_for_suite(suite: str) -> tuple[Experiment, ...]:
         return CORE_CONTROL_EXPERIMENTS
     if suite == "pooling_splits":
         return POOLING_SPLIT_EXPERIMENTS
+    if suite == "pooling_splits_controls":
+        return POOLING_SPLIT_CONTROL_EXPERIMENTS
     if suite == "full":
         return FULL_EXPERIMENTS
     raise ValueError(f"Unsupported suite: {suite}")
