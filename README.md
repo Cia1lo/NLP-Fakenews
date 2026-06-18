@@ -242,6 +242,48 @@ outputs/ablations_pooling_splits/test_matched_summary.csv
 outputs/ablations_pooling_splits/test_matched_summary_by_experiment.csv
 ```
 
+鲁棒性评估直接加载已有 checkpoint，不重训模型。它会在测试时评估：
+
+- `clean`
+- `edge_drop_0.25`, `edge_drop_0.5`
+- `zero_<feature>`
+- `noise_<feature>`
+
+例如只分析 `gossipcop` 上 BERT+profile 的 root/mean pooling 模型：
+
+```bash
+uv run fakenews-robustness \
+  --input-dir outputs/ablations \
+  --datasets gossipcop \
+  --experiments bert_profile_graph_mean_pool bert_profile_graph_root_pool \
+  --split test \
+  --device auto \
+  --output-dir outputs/robustness_gossipcop
+```
+
+结果会写到：
+
+```text
+outputs/robustness_gossipcop/test_robustness_summary.csv
+outputs/robustness_gossipcop/test_robustness_summary_by_experiment.csv
+```
+
+解释性分析基于鲁棒性结果做 occlusion delta 汇总，即比较 clean 与删边、
+置零特征、噪声扰动后的指标下降：
+
+```bash
+uv run fakenews-explainability \
+  --input outputs/robustness_gossipcop/test_robustness_summary.csv \
+  --output-dir outputs/robustness_gossipcop
+```
+
+结果会写到：
+
+```text
+outputs/robustness_gossipcop/explainability_summary.csv
+outputs/robustness_gossipcop/explainability_summary_by_experiment.csv
+```
+
 ## 当前基线结果
 
 默认基线配置：

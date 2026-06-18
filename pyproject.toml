@@ -28,6 +28,8 @@ fakenews-size-control = "model.train_size_control:main"
 fakenews-check-device = "model.check_device:main"
 fakenews-size-buckets = "model.analyze_size_buckets:main"
 fakenews-matched-eval = "model.analyze_matched_eval:main"
+fakenews-robustness = "model.evaluate_robustness:main"
+fakenews-explainability = "model.analyze_explainability:main"
 
 [build-system]
 requires = ["setuptools>=61"]
