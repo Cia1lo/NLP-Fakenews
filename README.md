@@ -1,4 +1,4 @@
-# fakenes-detect
+# NLP-Fakenews
 
 本项目使用 `uv` 管理 Python 环境和依赖，不使用 `requirements.txt`。
 
