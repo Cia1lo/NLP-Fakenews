@@ -1,0 +1,38 @@
+{
+  "best_epoch": 23,
+  "best_val_macro_f1": 0.9686701522613048,
+  "test": {
+    "accuracy": 0.9460694698354661,
+    "precision": 0.9596153846153846,
+    "recall": 0.9292364990689013,
+    "f1": 0.9441816461684012,
+    "macro_precision": 0.9467066470115251,
+    "macro_recall": 0.9457672621017756,
+    "macro_f1": 0.9460077107941918,
+    "auc": 0.978038106509667,
+    "loss": 0.1913056118887129
+  },
+  "args": {
+    "data_root": "database/data",
+    "dataset": "gossipcop",
+    "features": [
+      "profile"
+    ],
+    "epochs": 50,
+    "batch_size": 32,
+    "hidden_dim": 128,
+    "graph_layers": 2,
+    "dropout": 0.3,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "device": "cpu",
+    "num_workers": 0,
+    "class_weight": "balanced",
+    "output_dir": "outputs/ablations/profile_only_graph",
+    "patience": 10,
+    "max_train_batches": null,
+    "max_eval_batches": null,
+    "no_reverse_edges": false
+  }
+}

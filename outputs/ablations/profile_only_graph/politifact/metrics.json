@@ -1,0 +1,38 @@
+{
+  "best_epoch": 14,
+  "best_val_macro_f1": 0.7327586206896552,
+  "test": {
+    "accuracy": 0.8125,
+    "precision": 0.8793103448275862,
+    "recall": 0.9107142857142857,
+    "f1": 0.8947368421052632,
+    "macro_precision": 0.5229885057471264,
+    "macro_recall": 0.5178571428571428,
+    "macro_f1": 0.518796992481203,
+    "auc": 0.6316964285714285,
+    "loss": 0.3550789803266525
+  },
+  "args": {
+    "data_root": "database/data",
+    "dataset": "politifact",
+    "features": [
+      "profile"
+    ],
+    "epochs": 50,
+    "batch_size": 32,
+    "hidden_dim": 128,
+    "graph_layers": 2,
+    "dropout": 0.3,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "device": "cpu",
+    "num_workers": 0,
+    "class_weight": "balanced",
+    "output_dir": "outputs/ablations/profile_only_graph",
+    "patience": 10,
+    "max_train_batches": null,
+    "max_eval_batches": null,
+    "no_reverse_edges": false
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "best_epoch": 1,
+  "best_val_macro_f1": 0.9723716835056588,
+  "test": {
+    "accuracy": 0.9277879341864717,
+    "precision": 0.9089285714285714,
+    "recall": 0.9478584729981379,
+    "f1": 0.9279854147675478,
+    "macro_precision": 0.9282470572498662,
+    "macro_recall": 0.9281482670197152,
+    "macro_f1": 0.9277873911601259,
+    "auc": 0.969603054404916,
+    "loss": 0.21238735056664435
+  },
+  "args": {
+    "data_root": "database/data",
+    "dataset": "gossipcop",
+    "features": [
+      "bert"
+    ],
+    "epochs": 50,
+    "batch_size": 32,
+    "hidden_dim": 128,
+    "graph_layers": 2,
+    "pooling": "mean_max",
+    "dropout": 0.3,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "device": "auto",
+    "num_workers": 0,
+    "class_weight": "balanced",
+    "output_dir": "outputs/ablations/bert_only_graph/seed_42",
+    "patience": 10,
+    "max_train_batches": null,
+    "max_eval_batches": null,
+    "no_reverse_edges": false
+  }
+}

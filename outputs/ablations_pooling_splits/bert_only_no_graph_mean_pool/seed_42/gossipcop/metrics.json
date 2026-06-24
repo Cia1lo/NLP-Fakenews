@@ -1,0 +1,50 @@
+{
+  "best_epoch": 20,
+  "best_val_macro_f1": 0.9778783172395165,
+  "val": {
+    "accuracy": 0.978021978021978,
+    "precision": 0.9760956175298805,
+    "recall": 0.9760956175298805,
+    "f1": 0.9760956175298805,
+    "macro_precision": 0.9778783172395165,
+    "macro_recall": 0.9778783172395165,
+    "macro_f1": 0.9778783172395165,
+    "auc": 0.9882909041798906,
+    "loss": 0.09571721179294826
+  },
+  "test": {
+    "accuracy": 0.9478976234003657,
+    "precision": 0.9316546762589928,
+    "recall": 0.9646182495344506,
+    "f1": 0.9478499542543458,
+    "macro_precision": 0.9481693455644407,
+    "macro_recall": 0.9481978141747658,
+    "macro_f1": 0.9478975798668989,
+    "auc": 0.9790277123055475,
+    "loss": 0.19412470824839428
+  },
+  "args": {
+    "data_root": "database/data",
+    "dataset": "gossipcop",
+    "features": [
+      "bert"
+    ],
+    "epochs": 50,
+    "batch_size": 32,
+    "hidden_dim": 128,
+    "graph_layers": 0,
+    "pooling": "mean",
+    "dropout": 0.3,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "device": "auto",
+    "num_workers": 0,
+    "class_weight": "balanced",
+    "output_dir": "outputs/ablations_pooling_splits/bert_only_no_graph_mean_pool/seed_42",
+    "patience": 10,
+    "max_train_batches": null,
+    "max_eval_batches": null,
+    "no_reverse_edges": false
+  }
+}

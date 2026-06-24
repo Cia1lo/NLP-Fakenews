@@ -5,7 +5,13 @@ __pycache__/
 .ruff_cache/
 runs/
 checkpoints/
-outputs/
+outputs/*
+!outputs/ablations/
+!outputs/ablations/**
+!outputs/ablations_pooling_splits/
+!outputs/ablations_pooling_splits/**
+!outputs/robustness_gossipcop/
+!outputs/robustness_gossipcop/**
 database/data/
 *.egg-info/
 *.log

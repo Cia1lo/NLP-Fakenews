@@ -1,0 +1,50 @@
+{
+  "best_epoch": 13,
+  "best_val_macro_f1": 0.7327586206896552,
+  "val": {
+    "accuracy": 0.9354838709677419,
+    "precision": 0.9655172413793104,
+    "recall": 0.9655172413793104,
+    "f1": 0.9655172413793104,
+    "macro_precision": 0.7327586206896552,
+    "macro_recall": 0.7327586206896552,
+    "macro_f1": 0.7327586206896552,
+    "auc": 0.7758620689655172,
+    "loss": 0.23933547735214233
+  },
+  "test": {
+    "accuracy": 0.84375,
+    "precision": 0.8833333333333333,
+    "recall": 0.9464285714285714,
+    "f1": 0.9137931034482759,
+    "macro_precision": 0.5666666666666667,
+    "macro_recall": 0.5357142857142857,
+    "macro_f1": 0.5402298850574713,
+    "auc": 0.46875,
+    "loss": 0.308726504445076
+  },
+  "args": {
+    "data_root": "database/data",
+    "dataset": "politifact",
+    "features": [
+      "profile"
+    ],
+    "epochs": 50,
+    "batch_size": 32,
+    "hidden_dim": 128,
+    "graph_layers": 2,
+    "pooling": "mean",
+    "dropout": 0.3,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "device": "auto",
+    "num_workers": 0,
+    "class_weight": "balanced",
+    "output_dir": "outputs/ablations_pooling_splits/profile_only_graph_mean_pool/seed_42",
+    "patience": 10,
+    "max_train_batches": null,
+    "max_eval_batches": null,
+    "no_reverse_edges": false
+  }
+}

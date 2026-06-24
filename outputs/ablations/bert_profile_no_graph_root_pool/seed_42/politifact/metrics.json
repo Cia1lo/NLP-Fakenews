@@ -1,0 +1,40 @@
+{
+  "best_epoch": 9,
+  "best_val_macro_f1": 0.7327586206896552,
+  "test": {
+    "accuracy": 0.921875,
+    "precision": 0.9811320754716981,
+    "recall": 0.9285714285714286,
+    "f1": 0.9541284403669725,
+    "macro_precision": 0.8087478559176673,
+    "macro_recall": 0.9017857142857143,
+    "macro_f1": 0.8454852728150652,
+    "auc": 0.9799107142857142,
+    "loss": 0.1485602855682373
+  },
+  "args": {
+    "data_root": "database/data",
+    "dataset": "politifact",
+    "features": [
+      "bert",
+      "profile"
+    ],
+    "epochs": 50,
+    "batch_size": 32,
+    "hidden_dim": 128,
+    "graph_layers": 0,
+    "pooling": "root",
+    "dropout": 0.3,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "device": "auto",
+    "num_workers": 0,
+    "class_weight": "balanced",
+    "output_dir": "outputs/ablations/bert_profile_no_graph_root_pool/seed_42",
+    "patience": 10,
+    "max_train_batches": null,
+    "max_eval_batches": null,
+    "no_reverse_edges": false
+  }
+}
